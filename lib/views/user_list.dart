@@ -1,6 +1,8 @@
 import 'package:cruddev/componentes/user_tile.dart';
 import 'package:cruddev/models/users.dart';
 
+import 'package:cruddev/provider/users.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,19 +11,24 @@ class UserList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, User> user = Provider.of(context);
+    final Users users = Provider.of(context);
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.add))],
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add),
+          ),
+        ],
         title: const Text(
           'Lista de Usuarios',
           textAlign: TextAlign.center,
         ),
       ),
       body: ListView.builder(
-        itemCount: user.length,
+        itemCount: users.count,
         itemBuilder: (context, index) => UserTile(
-          user: user.values.elementAt(index),
+          user: users.byIndex(index),
         ),
       ),
     );
