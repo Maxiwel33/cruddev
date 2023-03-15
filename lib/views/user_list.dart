@@ -16,7 +16,16 @@ class UserList extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              users.put(User(
+                  id: '2',
+                  name: 'Luis',
+                  email: 'Teste2@teste.com',
+                  avatarUrl: ''));
+
+              //remove dados
+              //users.remove(users.byIndex(0));
+            },
             icon: const Icon(Icons.add),
           ),
         ],
